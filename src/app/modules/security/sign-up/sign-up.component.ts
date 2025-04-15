@@ -10,6 +10,9 @@ import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/mat
 import {MatDivider} from "@angular/material/divider";
 import {MatIcon} from "@angular/material/icon";
 import {RouterLink} from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sign-up',
@@ -30,6 +33,7 @@ import {RouterLink} from "@angular/router";
     MatCardTitle,
     MatDivider,
     MatIcon,
+    CommonModule,
     RouterLink
   ],
   providers: [provideNativeDateAdapter()],
@@ -37,5 +41,34 @@ import {RouterLink} from "@angular/router";
   styleUrls: ['./sign-up.component.scss','../security.module.style.scss']
 })
 export class SignUpComponent {
+  signupForm: FormGroup;
+  hidePassword = true;
+
+  constructor(private fb: FormBuilder, private router: Router) {
+    this.signupForm = this.fb.group({
+      name: ['', Validators.required],
+      dob: ['', Validators.required],
+      age: ['', [Validators.required, Validators.min(3)]],
+      gender: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
+
+  onSubmit() {
+    if (this.signupForm.valid) {
+      // Handle form submission
+      console.log('Form submitted:', this.signupForm.value);
+      this.router.navigate(['/security/sign-in']);
+      // You would typically call your authentication service here
+      // this.authService.register(this.signupForm.value).subscribe(...)
+    }
+  }
+
+  signInWithGoogle() {
+    // Implement Google sign-in logic
+    console.log('Signing in with Google');
+    // this.authService.googleSignIn();
+  }
 
 }

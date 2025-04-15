@@ -5,38 +5,34 @@ import {MatButton} from "@angular/material/button";
 import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
 import {MatError, MatFormField, MatLabel, MatSuffix} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
-import {MatOption} from "@angular/material/core";
-import {MatSelect} from "@angular/material/select";
 import {MatCard, MatCardContent, MatCardFooter, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {MatIcon} from "@angular/material/icon";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {NgIf} from "@angular/common";
 import {Auth} from "@angular/fire/auth";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-sign-in',
   standalone: true,
   imports: [
     MatButton,
-    MatDatepicker,
-    MatDatepickerInput,
-    MatDatepickerToggle,
     MatFormField,
     MatInput,
     MatLabel,
-    MatOption,
-    MatSelect,
     MatSuffix,
     MatCard,
     MatCardHeader,
     MatCardTitle,
     MatCardContent,
-    MatCardFooter,
     MatIcon,
     RouterLink,
     ReactiveFormsModule,
     NgIf,
-    MatError
+    MatError,
+    MatFormFieldModule,
+    MatInputModule
   ],
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss', '../security.module.style.scss']
@@ -50,6 +46,7 @@ export class SignInComponent {
   private router = inject(Router);
   loginForm: FormGroup;
   private firebaseAuth = inject(Auth);
+  hidePassword: boolean = true;
 
   async signInWithGoogle(): Promise<void> {
     this.isLoading = true;
