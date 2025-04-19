@@ -32,7 +32,7 @@
                   <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
                 <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
-                  Don't forget your secret word!
+                  Don't forget your Password!
                 </mat-error>
                 <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
                   Make it longer (at least 6 letters)
