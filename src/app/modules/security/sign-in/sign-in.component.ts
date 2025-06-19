@@ -48,26 +48,26 @@ export class SignInComponent {
   private firebaseAuth = inject(Auth);
   hidePassword: boolean = true;
 
-  async signInWithGoogle(): Promise<void> {
-    this.isLoading = true;
-    this.errorMessage = '';
-    this.successMessage = '';
+  // async signInWithGoogle(): Promise<void> {
+  //   this.isLoading = true;
+  //   this.errorMessage = '';
+  //   this.successMessage = '';
 
-    try {
-      const result = await this.auth.signInWithGoogle();
-      this.successMessage = 'Successfully signed in!';
+  //   try {
+  //     const result = await this.auth.signInWithGoogle();
+  //     this.successMessage = 'Successfully signed in!';
 
-      setTimeout(() => {
-        this.router.navigate(['/console']);
-      }, 1000);
+  //     setTimeout(() => {
+  //       this.router.navigate(['/console']);
+  //     }, 1000);
 
-    } catch (error: any) {
-      this.errorMessage = error.message || 'An error occurred during sign-in';
-      console.error('Sign-in error:', error);
-    } finally {
-      this.isLoading = false;
-    }
-  }
+  //   } catch (error: any) {
+  //     this.errorMessage = error.message || 'An error occurred during sign-in';
+  //     console.error('Sign-in error:', error);
+  //   } finally {
+  //     this.isLoading = false;
+  //   }
+  // }
 
   constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group({

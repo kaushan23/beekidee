@@ -65,10 +65,10 @@ export class SignUpComponent {
     }
   }
 
-  signInWithGoogle() {
-    // Implement Google sign-in logic
-    console.log('Signing in with Google');
-    // this.authService.googleSignIn();
-  }
+  // signInWithGoogle() {
+  //   // Implement Google sign-in logic
+  //   console.log('Signing in with Google');
+  //   // this.authService.googleSignIn();
+  // }
 
 }
